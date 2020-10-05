@@ -22,7 +22,6 @@ class Player {
     this.previousSong();
     this.toggleMute();
     this.setVolume();
-    // this.setDuration()
   }
 
   audios = [
@@ -65,14 +64,13 @@ class Player {
     this.musicTitle.textContent = this.currentPlaying.title;
     this.singerName.textContent = this.currentPlaying.artist;
     this.audio.src = this.currentPlaying.file;
+    this.audio.play();
   }
 
   playAudio() {
     this.isPlaying = true;
     this.startPlayer();
-    this.audio.play();
     this.animateColor();
-
     this.setDuration();
 
     this.audio.addEventListener("loadeddata", () => {
@@ -81,17 +79,19 @@ class Player {
 
       const res = `${("0" + min).slice(-2)}:${("0" + sec).slice(-2)}`;
       this.endTime.innerText = res;
+      
     });
 
     this.audio.addEventListener("loadeddata", () => {
-      this.audio.ontimeupdate = () => {
+      this.audio.addEventListener("timeupdate", () => {
         const min = Math.floor(this.audio.currentTime / 60);
         const sec = Math.floor(this.audio.currentTime % 60);
 
         const res = `${("0" + min).slice(-2)}:${("0" + sec).slice(-2)}`;
         this.startTime.innerText = res;
-        this.duration.value = this.audio.currentTime;
-      };
+        
+        this.duration.value = this.audio.currentTime
+      });
     });
 
     this.audio.addEventListener("ended", () => {
@@ -109,8 +109,6 @@ class Player {
   pauseAudio() {
     this.isPlaying = false;
     this.audio.pause();
-    
-    
   }
 
   tooglePlayPause() {
@@ -181,10 +179,6 @@ class Player {
 
       this.startPlayer();
       this.audio.play();
-
-    
-
- 
     });
   }
 
@@ -198,7 +192,6 @@ class Player {
 
       this.startPlayer();
       this.audio.play();
-      
     });
   }
 
@@ -209,29 +202,34 @@ class Player {
     });
   }
 
+  getVolume() {
+    let vol = this.volume.value;
+    this.audio.volume = vol / 100;
+  }
+
   setVolume() {
     this.volume.addEventListener("input", () => {
-      let vol = this.volume.value;
-      this.audio.volume = vol / 100;
+      this.getVolume();
     });
 
     this.volume.addEventListener("change", () => {
-      let vol = this.volume.value;
-      this.audio.volume = vol / 100;
+      this.getVolume();
     });
+  }
+
+  getDuration() {
+    let audioDuration = this.duration.value;
+    this.duration.max = this.audio.duration;
+    this.audio.currentTime = audioDuration;
   }
 
   setDuration() {
     this.duration.addEventListener("input", () => {
-      let audioDuration = this.duration.value;
-      this.duration.max = this.audio.duration;
-      this.audio.currentTime = audioDuration;
+      this.getDuration();
     });
 
     this.duration.addEventListener("change", () => {
-      let audioDuration = this.duration.value;
-      this.duration.max = this.audio.duration;
-      this.audio.currentTime = audioDuration;
+      this.getDuration();
     });
   }
   animateColor() {

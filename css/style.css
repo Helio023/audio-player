@@ -256,7 +256,9 @@ body {
 
 .vol path {
   fill: gray;
+  cursor: pointer;
 }
 .vol1 path {
   fill: var(--blue);
+  cursor: pointer;
 }

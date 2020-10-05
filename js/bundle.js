@@ -177,7 +177,7 @@ var Player = /*#__PURE__*/function () {
     this.nextSong();
     this.previousSong();
     this.toggleMute();
-    this.setVolume(); // this.setDuration()
+    this.setVolume();
   }
 
   _createClass(Player, [{
@@ -189,6 +189,7 @@ var Player = /*#__PURE__*/function () {
       this.musicTitle.textContent = this.currentPlaying.title;
       this.singerName.textContent = this.currentPlaying.artist;
       this.audio.src = this.currentPlaying.file;
+      this.audio.play();
     }
   }, {
     key: "playAudio",
@@ -197,7 +198,6 @@ var Player = /*#__PURE__*/function () {
 
       this.isPlaying = true;
       this.startPlayer();
-      this.audio.play();
       this.animateColor();
       this.setDuration();
       this.audio.addEventListener("loadeddata", function () {
@@ -207,13 +207,13 @@ var Player = /*#__PURE__*/function () {
         _this.endTime.innerText = res;
       });
       this.audio.addEventListener("loadeddata", function () {
-        _this.audio.ontimeupdate = function () {
+        _this.audio.addEventListener("timeupdate", function () {
           var min = Math.floor(_this.audio.currentTime / 60);
           var sec = Math.floor(_this.audio.currentTime % 60);
           var res = "".concat(("0" + min).slice(-2), ":").concat(("0" + sec).slice(-2));
           _this.startTime.innerText = res;
           _this.duration.value = _this.audio.currentTime;
-        };
+        });
       });
       this.audio.addEventListener("ended", function () {
         _this.currentTrack++;
@@ -295,18 +295,29 @@ var Player = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "getVolume",
+    value: function getVolume() {
+      var vol = this.volume.value;
+      this.audio.volume = vol / 100;
+    }
+  }, {
     key: "setVolume",
     value: function setVolume() {
       var _this6 = this;
 
       this.volume.addEventListener("input", function () {
-        var vol = _this6.volume.value;
-        _this6.audio.volume = vol / 100;
+        _this6.getVolume();
       });
       this.volume.addEventListener("change", function () {
-        var vol = _this6.volume.value;
-        _this6.audio.volume = vol / 100;
+        _this6.getVolume();
       });
+    }
+  }, {
+    key: "getDuration",
+    value: function getDuration() {
+      var audioDuration = this.duration.value;
+      this.duration.max = this.audio.duration;
+      this.audio.currentTime = audioDuration;
     }
   }, {
     key: "setDuration",
@@ -314,14 +325,10 @@ var Player = /*#__PURE__*/function () {
       var _this7 = this;
 
       this.duration.addEventListener("input", function () {
-        var audioDuration = _this7.duration.value;
-        _this7.duration.max = _this7.audio.duration;
-        _this7.audio.currentTime = audioDuration;
+        _this7.getDuration();
       });
       this.duration.addEventListener("change", function () {
-        var audioDuration = _this7.duration.value;
-        _this7.duration.max = _this7.audio.duration;
-        _this7.audio.currentTime = audioDuration;
+        _this7.getDuration();
       });
     }
   }, {
@@ -377,7 +384,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50619" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51165" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
