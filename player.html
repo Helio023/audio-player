@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Leitor de Mp3</title>
+        <link rel="stylesheet" href="css/style.css">
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="player">
+                <div class="player__header">
+                    <img class="bg__img" alt="artist image">
+                    <div class="artist__img">
+                        <img class="singer"  alt="artist">
+                    </div>
+                    <div class="music__desc">
+                        <p class="music__title">** Someone you loved **</p>
+                        <p class="music__artist">Lewis Capaldi</p>
+                    </div>
+                </div>
+                <div class="player__body">
+                    <!-- Control buttons -->
+                    <div class="player__controls">
+                        <div class="controls">
+                            <div class="prev">
+                                <svg class="player__icon" width="12px" height="12px"
+                                    viewBox="0 0 12 12"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                >
+                                    <g
+                                        id="Icons"
+                                        stroke="none"
+                                        stroke-width="1"
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                    >
+                                        <g id="Outlined" transform="translate(-242.000000, -1000.000000)">
+                                            <g id="Av" transform="translate(100.000000, 852.000000)">
+                                                <g id="Outlined-/-AV-/-skip_previous" transform="translate(136.000000, 142.000000)">
+                                                    <g>
+                                                        <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                                                        <path d="M6,6 L8,6 L8,18 L6,18 L6,6 Z M9.5,12 L18,18 L18,6 L9.5,12 Z M16,14.14 L12.97,12 L16,9.86 L16,14.14 Z" id="🔹-Icon-Color" fill="#1D1D1D"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="play-pause">
+                                <svg
+                                    class="player__icon"
+                                    width="11px"
+                                    height="14px"
+                                    
+                                >
+                                    <g
+                                        id="Icons"
+                                        stroke="none"
+                                        stroke-width="1"
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                    >
+                                        <g id="Outlined" transform="translate(-244.000000, -955.000000)">
+                                            <g id="Av" transform="translate(100.000000, 852.000000)">
+                                                <g id="Outlined-/-AV-/-play_arrow" transform="translate(136.000000, 98.000000)">
+                                                    <g>
+                                                        <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                                                        <path d="M10,8.64 L15.27,12 L10,15.36 L10,8.64 Z M8,5 L8,19 L19,12 L8,5 Z" id="🔹-Icon-Color" fill="#1D1D1D"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <div class="circle circle1"></div>
+                                <div class="circle circle2"></div>
+                                
+                            </div>
+                            <div class="next">
+                                <svg
+                                    class="player__icon"
+                                    width="12px"
+                                    height="12px"
+                                    viewBox="0 0 12 12"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                >
+                                    <g
+                                        id="Icons"
+                                        stroke="none"
+                                        stroke-width="1"
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                    >
+                                        <g id="Outlined" transform="translate(-276.000000, -1000.000000)">
+                                            <g id="Av" transform="translate(100.000000, 852.000000)">
+                                                <g id="Outlined-/-AV-/-skip_next" transform="translate(170.000000, 142.000000)">
+                                                    <g>
+                                                        <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                                                        <path d="M6,18 L14.5,12 L6,6 L6,18 Z M8,9.86 L11.03,12 L8,14.14 L8,9.86 Z M16,6 L18,6 L18,18 L16,18 L16,6 Z" id="🔹-Icon-Color" fill="#1D1D1D"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Control volume and time -->
+                    <div class="time-vol__control">
+                        <div class="time">
+                            <input
+                                type="range"
+                                min="0"
+                               
+                                name="dur"
+                                value="0"
+                                step="1"
+                                id="dur"
+                            >
+                            <div class="duration">
+                                <span class="start">00:00</span>
+                                <span class="end">00:00</span>
+                            </div>
+                        </div>
+                        <div class="volume">
+                            <svg
+                                class="vol__icon"
+                                width="18px"
+                                height="18px"
+                                viewBox="0 0 18 18"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                            >
+                                <g
+                                    id="Icons"
+                                    stroke="none"
+                                    stroke-width="1"
+                                    fill="none"
+                                    fill-rule="evenodd"
+                                >
+                                    <g id="Outlined" transform="translate(-715.000000, -997.000000)">
+                                        <g id="Av" transform="translate(100.000000, 852.000000)">
+                                            <g id="Outlined-/-AV-/-volume_up" transform="translate(612.000000, 142.000000)">
+                                                <g>
+                                                    <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                                                    <path d="M3,9 L3,15 L7,15 L12,20 L12,4 L7,9 L3,9 Z M10,8.83 L10,15.17 L7.83,13 L5,13 L5,11 L7.83,11 L10,8.83 Z M16.5,12 C16.5,10.23 15.48,8.71 14,7.97 L14,16.02 C15.48,15.29 16.5,13.77 16.5,12 Z M14,3.23 L14,5.29 C16.89,6.15 19,8.83 19,12 C19,15.17 16.89,17.85 14,18.71 L14,20.77 C18.01,19.86 21,16.28 21,12 C21,7.72 18.01,4.14 14,3.23 Z" id="🔹-Icon-Color" fill="#1D1D1D"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                name="vol"
+                                id="vol"
+                                step="1"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy">
+                    &copy; Mapupo Mp3 Player 
+                </div>
+            </div>
+        </div>
+
+      
+        <script src="js/bundle.js"></script>
+    </body>
+</html>

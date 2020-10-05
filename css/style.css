@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;500&display=swap");
+/* font-family: 'Sansita Swashed', cursive; */
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #eee;
+  padding: 0 1rem;
+}
+
+:root {
+  --blue: #4dbcf0d5;
+  --white: #fff;
+}
+.player {
+  margin: 5rem auto;
+  max-width: 30rem;
+  background-color: #fff;
+  box-shadow: 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+@media (max-width: 32em) {
+  .player {
+    margin: 2rem auto;
+  }
+}
+.player__header {
+  height: 25rem;
+
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  z-index: 100;
+}
+
+.artist__img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 10rem;
+  border: 2px solid var(--blue);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.artist__img > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rem;
+  object-fit: cover;
+}
+
+.music__desc {
+  position: absolute;
+  left: 0;
+  top: 80%;
+  width: 100%;
+}
+
+.music__artist {
+  text-align: center;
+  color: var(--white);
+  font-size: 1.3rem;
+}
+
+.music__title {
+  text-align: center;
+  color: var(--white);
+  font-size: 1.6rem;
+}
+.player__header > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+.prev,
+.next {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 5rem;
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+.play-pause {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 8rem;
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 10000;
+  box-shadow: 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+.circle {
+  position: absolute;
+  width: 8.7rem;
+  height: 8.7rem;
+  border-radius: 8.7rem;
+  /* border-left: 2px solid #006a71;
+  border-right: 2px solid #1aa6b7;
+  border-top: 2px solid #e97171;
+  border-bottom: 1px solid #d789d7; */
+  z-index: 10;
+}
+.circle1 {
+  position: absolute;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 9rem;
+  /* border-left: 2px solid #ff7171;
+  border-right: 2px solid #ff8e6e;
+  border-top: 2px solid #aa4a30;
+  border-bottom: 1px solid #515070; */
+  z-index: 10;
+  transform: rotate(30deg);
+}
+.player__icon path {
+  fill: var(--white);
+}
+
+.time-vol__control {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duration {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.time {
+  width: 15rem;
+}
+.volume {
+  display: flex;
+  align-items: center;
+  margin-left: 3rem;
+  transform: translateY(-0.5rem);
+  width: 10rem;
+}
+
+#dur {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.5rem;
+  background: #ff7171;
+  cursor: pointer;
+  border-radius: 5rem;
+}
+#dur::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  box-shadow: 0 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-radius: 5rem;
+}
+#dur::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 70%;
+  background: var(--white);
+  cursor: pointer;
+  box-shadow: 0 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-radius: 5rem;
+}
+
+#vol {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50%;
+  height: 0.5rem;
+  background: #ff7171;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+#vol::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  box-shadow: 0 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-radius: 5rem;
+}
+#vol::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  box-shadow: 0 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-radius: 5rem;
+}
+
+#dur:focus,
+#vol {
+  outline: none;
+}
+
+.vol__icon path {
+  fill: var(--blue);
+}
+
+.copy {
+  text-align: center;
+  font-size: 1.6rem;
+  color: gray;
+  font-family: "Sansita Swashed", cursive;
+  padding: 1rem;
+  border: 1px solid var(--blue);
+  width: max-content;
+  border-radius: 5px;
+  margin: 0 auto 1rem auto;
+}
+
+.vol path {
+  fill: gray;
+}
+.vol1 path {
+  fill: var(--blue);
+}
